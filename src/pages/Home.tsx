@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from '@/components/Hero';
 import InfoSection from '@/components/InfoSection';
 import ChatSection from '@/components/ChatSection';
-import { Mail, Github, Twitter, MapPin } from 'lucide-react';
+import { Mail, Github, MessageSquare, MapPin } from 'lucide-react';
 
 const Home: React.FC = () => {
   return (
@@ -24,19 +24,23 @@ const Home: React.FC = () => {
           
           <div className="flex flex-col gap-4 items-center md:items-end">
             <div className="flex gap-6">
-              <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-accent/20 transition-colors text-white/80 hover:text-white border border-white/10 group">
+              <a href="mailto:contact@xulongqiang.com" className="p-2 rounded-full bg-white/5 hover:bg-accent/20 transition-colors text-white/80 hover:text-white border border-white/10 group" title="邮件联系">
                 <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
-              <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-accent/20 transition-colors text-white/80 hover:text-white border border-white/10 group">
+              <button 
+                className="p-2 rounded-full bg-white/5 hover:bg-accent/20 transition-colors text-white/80 hover:text-white border border-white/10 group" 
+                title="微信联系"
+                onClick={() => alert('请搜索微信号：徐龙强 (或在此替换为您的微信号)')}
+              >
+                <MessageSquare className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </button>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/5 hover:bg-accent/20 transition-colors text-white/80 hover:text-white border border-white/10 group" title="GitHub">
                 <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-accent/20 transition-colors text-white/80 hover:text-white border border-white/10 group">
-                <Twitter className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
             </div>
             <div className="flex items-center gap-2 text-white/40 text-xs">
               <MapPin className="w-3 h-3" />
-              <span>中国 · 杭州</span>
+              <span>中国 · 济南</span>
             </div>
           </div>
         </div>
