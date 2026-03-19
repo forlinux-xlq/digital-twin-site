@@ -5,12 +5,17 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Send, User, Bot, Loader2 } from 'lucide-react';
-import { type ChatMessage, getBotReply } from '@/data/chatData';
 import { toast } from 'sonner';
+import { callAI, type Message } from '@/services/aiService';
+
+interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
 
 const ChatSection: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'bot', content: '你好！我是徐龙强的数字分身。你可以问我关于我的职业方向、正在做的项目或者联系方式等问题。' }
+    { role: 'assistant', content: '你好！我是徐龙强的数字分身。你可以问我关于我的职业方向、正在做的项目或者联系方式等问题。' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -37,13 +42,31 @@ const ChatSection: React.FC = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // 模拟思考过程
-    setTimeout(() => {
-      const botReply = getBotReply(trimmedInput);
-      const botMsg: ChatMessage = { role: 'bot', content: botReply };
+    try {
+      // 准备发送给 AI 的消息历史
+      const aiMessages: Message[] = messages.map(msg => ({
+        role: msg.role,
+        content: msg.content,
+      }));
+      aiMessages.push({ role: 'user', content: trimmedInput });
+
+      // 调用 AI 服务
+      const botReply = await callAI(aiMessages);
+      const botMsg: ChatMessage = { role: 'assistant', content: botReply };
       setMessages(prev => [...prev, botMsg]);
+    } catch (error) {
+      console.error('AI 调用失败:', error);
+      toast.error('抱歉，我暂时无法回答。请稍后再试或直接联系我。');
+      
+      // 添加错误提示消息
+      const errorMsg: ChatMessage = { 
+        role: 'assistant', 
+        content: '抱歉，我现在遇到了一些技术问题。你可以通过页面底部的联系方式直接找到我！' 
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
       setIsTyping(false);
-    }, 800);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
