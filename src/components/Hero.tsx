@@ -1,45 +1,56 @@
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
+import { MessageCircle, MapPin } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full py-16 md:py-24 gradient-bg text-white overflow-hidden">
-      <div className="container px-4 mx-auto flex flex-col items-center md:items-start text-center md:text-left gap-6 md:flex-row md:gap-10">
-        <Avatar className="w-24 h-24 md:w-32 md:h-32 border-4 border-white/20 shadow-2xl">
-          <AvatarImage 
-            src="https://miaoda-site-img.cdn.bcebos.com/images/MiaoTu_71d5465f-c6e0-4bb0-9ecc-8653adfb47de.jpg" 
-            alt="徐龙强" 
-          />
-          <AvatarFallback className="bg-primary-glow text-2xl font-bold">徐</AvatarFallback>
-        </Avatar>
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center justify-center px-6">
         
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center justify-center md:justify-start gap-3">
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">徐龙强</h1>
-            <Badge variant="secondary" className="bg-white/10 text-white border-white/20 hover:bg-white/20">
-              工程师
-            </Badge>
-          </div>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
-            一个正在学习用 AI 做产品的嵌入式 Linux 工程师
+        <div className="relative mb-8">
+          <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-2xl scale-125"></div>
+          <Avatar className="relative w-24 h-24 md:w-32 md:h-32 border-2 border-white/10 shadow-2xl ring-4 ring-cyan-500/20">
+            <AvatarImage 
+              src="https://miaoda-site-img.cdn.bcebos.com/images/MiaoTu_71d5465f-c6e0-4bb0-9ecc-8653adfb47de.jpg" 
+              alt="徐龙强" 
+            />
+            <AvatarFallback className="bg-slate-700 text-2xl font-medium">徐</AvatarFallback>
+          </Avatar>
+        </div>
+        
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+            徐龙强
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-300 font-light leading-relaxed mb-10">
+            专注于AI产品开发
           </p>
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
-            <div className="flex items-center gap-2 text-sm text-white/60">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        </div>
+        
+        <div className="flex flex-col items-center gap-5 mt-2">
+          <a 
+            href="#chat" 
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-medium rounded-full transition-all duration-200 hover:scale-105 shadow-lg shadow-cyan-500/25"
+          >
+            <MessageCircle className="w-5 h-5" />
+            <span>与数字分身对话</span>
+          </a>
+          
+          <div className="flex items-center gap-4 text-sm text-slate-500">
+            <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">
               Open to Work
-            </div>
-            <div className="flex items-center gap-2 text-sm text-white/60">
-              <span className="w-2 h-2 rounded-full bg-blue-400"></span>
-              Digital Twin Online
-            </div>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <MapPin className="w-4 h-4" />
+              济南，中国
+            </span>
           </div>
         </div>
       </div>
       
-      {/* 装饰性背景元素 */}
-      <div className="absolute top-0 right-0 -mt-24 -mr-24 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 -mb-24 -ml-24 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-slate-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
     </section>
   );
 };
