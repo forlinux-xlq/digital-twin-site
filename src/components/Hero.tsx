@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
           <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-2xl scale-125"></div>
           <Avatar className="relative w-24 h-24 md:w-32 md:h-32 border-2 border-white/10 shadow-2xl ring-4 ring-cyan-500/20">
             <AvatarImage 
-              src="https://miaoda-site-img.cdn.bcebos.com/images/MiaoTu_71d5465f-c6e0-4bb0-9ecc-8653adfb47de.jpg" 
+              src="/images/xlq.jpg" 
               alt="徐龙强" 
             />
             <AvatarFallback className="bg-slate-700 text-2xl font-medium">徐</AvatarFallback>

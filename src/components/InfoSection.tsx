@@ -1,5 +1,7 @@
 import React from 'react';
-import { Cpu, Sparkles, Brain, MessageSquareHeart, Laptop } from 'lucide-react';
+import { Cpu, Sparkles, Brain, MessageSquareHeart, Laptop, FileText } from 'lucide-react';
+
+const summary = `深耕嵌入式底层系统开发，精通 Linux/QNX/Android/OpenHarmony 多系统内核裁剪、驱动移植及性能调优。主导过瑞芯微 (RK3288/3568/3576/3588等)、全志 (T113/T507/A40i)、恩智浦 (i.MX6) 及瑞萨/新唐/君正等多平台量产项目。具备端侧大模型落地经验，曾在 RK3568/3576 成功移植 YOLOv8 并自训练条形码识别算法；独立完成矿鸿/OpenHarmony 在 RK3568 上的系统构建及电阻屏驱动适配。在AI应用方面也有一定的了解。`;
 
 const infoData = [
   {
@@ -34,6 +36,20 @@ const InfoSection: React.FC = () => {
             <h2 className="text-xl font-semibold text-slate-800">关于我</h2>
           </div>
           <p className="text-slate-500 text-sm ml-11">了解更多关于我的信息</p>
+        </div>
+
+        <div className="mb-8 p-6 bg-white rounded-xl border border-slate-100">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600">
+              <FileText className="w-5 h-5" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-medium text-slate-400 mb-3">个人总结</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                {summary}
+              </p>
+            </div>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
